@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.samplechecklist.web.option.OptionBrowse"
+        focusComponent="optionsTable"
+        lookupComponent="optionsTable"
+        messagesPack="com.company.samplechecklist.web.option">
+    <dsContext>
+        <groupDatasource id="optionsDs"
+                         class="com.company.samplechecklist.entity.Option"
+                         view="option-browse-view">
+            <query>
+                <![CDATA[select e from samplechecklist$Option e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="optionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="optionsTable"
+                datasource="optionsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="optionsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <group>
+                    <column id="group"/>
+                </group>
+                <column id="value"/>
+                <column id="description"
+                        maxTextLength="50"/>
+            </columns>
+            <rows datasource="optionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="optionsTable.create"/>
+                <button id="editBtn"
+                        action="optionsTable.edit"/>
+                <button id="removeBtn"
+                        action="optionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

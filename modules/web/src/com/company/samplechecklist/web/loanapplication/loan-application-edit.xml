@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.samplechecklist.web.loanapplication.LoanApplicationEdit"
+        datasource="loanApplicationDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.samplechecklist.web.loanapplication">
+    <dsContext>
+        <datasource id="loanApplicationDs"
+                    class="com.company.samplechecklist.entity.LoanApplication"
+                    view="loan-application-view">
+            <groupDatasource id="checksDs"
+                             property="checks"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="loanApplicationDs">
+            <column width="250px">
+                <field property="number"/>
+                <field property="applicantName"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="checksBox"
+                  caption="msg://com.company.samplechecklist.entity/LoanApplication.checks">
+            <groupTable id="checksTable"
+                        editable="true"
+                        height="300px"
+                        width="100%">
+                <columns>
+                    <group>
+                        <column id="check.group"/>
+                    </group>
+                    <column id="check"/>
+                    <column id="option"
+                            generator="generateOptionCell"/>
+                </columns>
+                <rows datasource="checksDs"/>
+            </groupTable>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.samplechecklist.web.optionsgroup.OptionsGroupEdit"
+        datasource="optionsGroupDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.samplechecklist.web.optionsgroup">
+    <dsContext>
+        <datasource id="optionsGroupDs"
+                    class="com.company.samplechecklist.entity.OptionsGroup"
+                    view="options-group-view">
+            <collectionDatasource id="optionsDs"
+                                  property="options"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="auto"
+                width="auto"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="optionsGroupDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="description"
+                       rows="5"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="optionsGroupBox"
+                  caption="Options"
+                  spacing="true">
+            <hbox spacing="true">
+                <button id="createButton"
+                        caption="Add new option"
+                        icon="icons/plus-btn.png"
+                        invoke="onCreateButtonClick"/>
+                <button id="removeButton"
+                        caption="Remove option"
+                        icon="font-icon:MINUS"
+                        invoke="onRemoveButtonClick"/>
+            </hbox>
+            <table id="optionsTable"
+                   editable="true"
+                   height="300px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="value"
+                            editable="true"/>
+                    <column id="description"
+                            editable="true"
+                            maxTextLength="50"/>
+                </columns>
+                <rows datasource="optionsDs"/>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

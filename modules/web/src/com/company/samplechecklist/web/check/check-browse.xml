@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.samplechecklist.web.check.CheckBrowse"
+        focusComponent="checksTable"
+        lookupComponent="checksTable"
+        messagesPack="com.company.samplechecklist.web.check">
+    <dsContext>
+        <groupDatasource id="checksDs"
+                         class="com.company.samplechecklist.entity.Check"
+                         view="check-browse-view">
+            <query>
+                <![CDATA[select e from samplechecklist$Check e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="checksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="checksTable"
+                datasource="checksDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="checksTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <group>
+                    <column id="group"/>
+                </group>
+                <column id="name"/>
+                <column id="optionsGroup"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="checksDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="checksTable.create"/>
+                <button id="editBtn"
+                        action="checksTable.edit"/>
+                <button id="removeBtn"
+                        action="checksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

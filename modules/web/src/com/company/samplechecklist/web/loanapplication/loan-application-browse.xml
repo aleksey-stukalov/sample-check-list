@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.samplechecklist.web.loanapplication.LoanApplicationBrowse"
+        focusComponent="loanApplicationsTable"
+        lookupComponent="loanApplicationsTable"
+        messagesPack="com.company.samplechecklist.web.loanapplication">
+    <dsContext>
+        <groupDatasource id="loanApplicationsDs"
+                         class="com.company.samplechecklist.entity.LoanApplication"
+                         view="_local">
+            <query>
+                <![CDATA[select e from samplechecklist$LoanApplication e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="loanApplicationsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="loanApplicationsTable"
+                datasource="loanApplicationsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="loanApplicationsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="applicantName"/>
+            </columns>
+            <rows datasource="loanApplicationsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="loanApplicationsTable.create"/>
+                <button id="editBtn"
+                        action="loanApplicationsTable.edit"/>
+                <button id="removeBtn"
+                        action="loanApplicationsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.samplechecklist.web.option.OptionEdit"
+        datasource="optionDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.samplechecklist.web.option">
+    <dsContext>
+        <datasource id="optionDs"
+                    class="com.company.samplechecklist.entity.Option"
+                    view="option-browse-view"/>
+        <collectionDatasource id="groupsDs"
+                              class="com.company.samplechecklist.entity.OptionsGroup"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from samplechecklist$OptionsGroup e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="auto"
+                width="auto"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="optionDs">
+            <column width="250px">
+                <field optionsDatasource="groupsDs"
+                       property="group"/>
+                <field property="value"/>
+                <field property="description"
+                       rows="5"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

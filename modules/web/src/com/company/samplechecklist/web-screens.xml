@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/company/samplechecklist/screens.xml"/>
+    <screen id="samplechecklist$OptionsGroup.browse"
+            template="com/company/samplechecklist/web/optionsgroup/options-group-browse.xml"/>
+    <screen id="samplechecklist$OptionsGroup.edit"
+            template="com/company/samplechecklist/web/optionsgroup/options-group-edit.xml"/>
+    <screen id="samplechecklist$Option.browse"
+            template="com/company/samplechecklist/web/option/option-browse.xml"/>
+    <screen id="samplechecklist$Option.edit"
+            template="com/company/samplechecklist/web/option/option-edit.xml"/>
+    <screen id="samplechecklist$Check.browse"
+            template="com/company/samplechecklist/web/check/check-browse.xml"/>
+    <screen id="samplechecklist$Check.edit"
+            template="com/company/samplechecklist/web/check/check-edit.xml"/>
+    <screen id="samplechecklist$ChecksGroup.browse"
+            template="com/company/samplechecklist/web/checksgroup/checks-group-browse.xml"/>
+    <screen id="samplechecklist$ChecksGroup.edit"
+            template="com/company/samplechecklist/web/checksgroup/checks-group-edit.xml"/>
+    <screen id="samplechecklist$LoanApplication.browse"
+            template="com/company/samplechecklist/web/loanapplication/loan-application-browse.xml"/>
+    <screen id="samplechecklist$LoanApplication.edit"
+            template="com/company/samplechecklist/web/loanapplication/loan-application-edit.xml"/>
+</screen-config>

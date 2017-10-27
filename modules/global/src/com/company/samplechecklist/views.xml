@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.samplechecklist.entity.OptionsGroup"
+          extends="_local"
+          name="options-group-view">
+        <property name="options"
+                  view="_local">
+            <property name="group"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="com.company.samplechecklist.entity.Option"
+          extends="_local"
+          name="option-browse-view">
+        <property name="group"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.samplechecklist.entity.Check"
+          extends="_local"
+          name="check-browse-view">
+        <property name="group"
+                  view="_minimal"/>
+        <property name="optionsGroup"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.samplechecklist.entity.Check"
+          extends="_local"
+          name="check-edit-view">
+        <property name="group"
+                  view="_minimal"/>
+        <property name="optionsGroup"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.samplechecklist.entity.LoanApplication"
+          extends="_local"
+          name="loan-application-view">
+        <property name="checks"
+                  view="_minimal">
+            <property name="check"
+                      view="_local">
+                <property name="group"
+                          view="_minimal"/>
+                <property name="optionsGroup"
+                          view="_minimal"/>
+            </property>
+            <property name="option"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="com.company.samplechecklist.entity.CheckItem"
+          extends="_local"
+          name="check-item-view">
+        <property name="check"
+                  view="_minimal">
+            <property name="group"
+                      view="_minimal"/>
+        </property>
+        <property name="option"
+                  view="_minimal"/>
+    </view>
+</views>
