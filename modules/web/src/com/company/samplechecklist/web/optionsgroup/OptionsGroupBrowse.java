@@ -24,7 +24,7 @@ public class OptionsGroupBrowse extends AbstractLookup {
     public void init(Map<String, Object> params) {
         super.init(params);
 
-        optionsGroupsTableEdit.setWindowParams(ParamsMap.of("allowEditOptions", allowEditOptions));
-        optionsGroupsTableCreate.setWindowParams(ParamsMap.of("allowEditOptions", allowEditOptions));
+        optionsGroupsTableEdit.setWindowParams(ParamsMap.of(OptionsGroupEdit.COMMAND_SHOW_OPTIONS_EDITOR, allowEditOptions));
+        optionsGroupsTableCreate.setWindowParams(ParamsMap.of(OptionsGroupEdit.COMMAND_SHOW_OPTIONS_EDITOR, allowEditOptions));
     }
 }
