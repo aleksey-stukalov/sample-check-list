@@ -37,6 +37,7 @@
                 <column id="name"/>
                 <column id="optionsGroup"/>
                 <column id="description"/>
+                <column id="mandatory"/>
             </columns>
             <rows datasource="checksDs"/>
             <rowsCount/>

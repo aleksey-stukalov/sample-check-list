@@ -63,6 +63,7 @@ create table SAMPLECHECKLIST_CHECK (
     --
     NAME varchar(255) not null,
     DESCRIPTION longvarchar,
+    MANDATORY boolean not null,
     GROUP_ID varchar(36) not null,
     OPTIONS_GROUP_ID varchar(36) not null,
     --
@@ -98,7 +99,7 @@ create table SAMPLECHECKLIST_CHECK_ITEM (
     DELETED_BY varchar(50),
     --
     CHECK_ID varchar(36) not null,
-    OPTION_ID varchar(36) not null,
+    OPTION_ID varchar(36),
     LOAN_APPLICATION_ID varchar(36),
     --
     primary key (ID)

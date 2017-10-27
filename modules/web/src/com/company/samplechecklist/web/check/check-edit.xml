@@ -39,6 +39,7 @@
                        property="group"/>
                 <field optionsDatasource="optionsGroupsDs"
                        property="optionsGroup"/>
+                <field property="mandatory"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

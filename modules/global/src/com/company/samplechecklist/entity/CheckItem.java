@@ -16,7 +16,7 @@ public class CheckItem extends StandardEntity {
     @JoinColumn(name = "CHECK_ID")
     protected Check check;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OPTION_ID")
     protected Option option;
 

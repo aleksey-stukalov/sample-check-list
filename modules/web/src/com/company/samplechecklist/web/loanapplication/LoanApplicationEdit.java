@@ -7,15 +7,15 @@ import com.company.samplechecklist.entity.Option;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.Metadata;
-import com.haulmont.cuba.gui.components.AbstractEditor;
-import com.haulmont.cuba.gui.components.Component;
-import com.haulmont.cuba.gui.components.GroupTable;
-import com.haulmont.cuba.gui.components.LookupField;
+import com.haulmont.cuba.gui.components.*;
+import com.haulmont.cuba.gui.data.GroupDatasource;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class LoanApplicationEdit extends AbstractEditor<LoanApplication> {
 
@@ -31,6 +31,8 @@ public class LoanApplicationEdit extends AbstractEditor<LoanApplication> {
     @Inject
     private ComponentsFactory componentsFactory;
 
+    @Inject
+    private GroupDatasource<CheckItem, UUID> checksDs;
 
     @Override
     protected void initNewItem(LoanApplication item) {
@@ -65,8 +67,18 @@ public class LoanApplicationEdit extends AbstractEditor<LoanApplication> {
         );
         lookupField.setOptionsList(options);
         lookupField.setWidth("100%");
+        lookupField.setRequired(entity.getCheck().getMandatory());
         lookupField.setValue(entity.getOption());
         lookupField.addValueChangeListener(e -> entity.setOption((Option) e.getValue()));
 		return lookupField;
+    }
+
+    @Override
+    protected void postValidate(ValidationErrors errors) {
+        super.postValidate(errors);
+
+        checksDs.getItems().stream()
+                .filter(i -> i.getCheck().getMandatory() && i.getOption() == null)
+                .forEach(i -> errors.add(String.format("Check '%s' is mandatory", i.getCheck().getName())));
     }
 }

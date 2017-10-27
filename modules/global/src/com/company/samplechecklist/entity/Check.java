@@ -11,6 +11,7 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import javax.persistence.Lob;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|name")
 @Table(name = "SAMPLECHECKLIST_CHECK")
@@ -25,6 +26,10 @@ public class Check extends StandardEntity {
     @Column(name = "DESCRIPTION")
     protected String description;
 
+    @NotNull
+    @Column(name = "MANDATORY", nullable = false)
+    protected Boolean mandatory = false;
+
     @Lookup(type = LookupType.DROPDOWN, actions = {"lookup"})
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "GROUP_ID")
@@ -34,6 +39,15 @@ public class Check extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "OPTIONS_GROUP_ID")
     protected OptionsGroup optionsGroup;
+
+    public void setMandatory(Boolean mandatory) {
+        this.mandatory = mandatory;
+    }
+
+    public Boolean getMandatory() {
+        return mandatory;
+    }
+
 
     public void setDescription(String description) {
         this.description = description;
