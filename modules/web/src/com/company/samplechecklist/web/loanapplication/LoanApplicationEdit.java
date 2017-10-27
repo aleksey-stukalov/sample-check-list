@@ -15,7 +15,6 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class LoanApplicationEdit extends AbstractEditor<LoanApplication> {
 
